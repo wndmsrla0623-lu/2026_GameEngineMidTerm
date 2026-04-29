@@ -13,11 +13,17 @@ public class Playercontroller : MonoBehaviour
     private bool isGrounded;
     private float moveInput;
 
+
     private void OnTriggererEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Respawn"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (collision.CompareTag("Finish"))
+        {
+            collision.GetComponent<Levelobject>().MoveToNextLevel();
         }
     }
 
